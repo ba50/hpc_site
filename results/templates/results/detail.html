@@ -1,0 +1,19 @@
+{% extends 'results/base.html' %}
+
+{% block title %} SetUp Details {% endblock %}
+{% block body %}
+    <h1>{{ setup.name }}</h1>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    {% for run in setup.run_set.all %}
+        {{ run.name }}
+        {% if run.is_favorite %}
+            <img src="http://www.iconsdb.com/icons/preview/black/star-xxl.png" />
+        {% endif %}
+        <br>
+    {% endfor %}
+
+{% endblock %}
