@@ -8,12 +8,29 @@
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
 
-    {% for run in setup.run_set.all %}
-        {{ run.name }}
-        {% if run.is_favorite %}
-            <img src="http://www.iconsdb.com/icons/preview/black/star-xxl.png" />
-        {% endif %}
-        <br>
-    {% endfor %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Master workers</th>
+                    <th>Node1 workers</th>
+                    <th>Node2 workers</th>
+                    <th>Nodes SWAP [GB]</th>
+                    <th>CPU time</th>
+                    <th>Real time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for run in setup.run_set.all %}
+                    <tr>
+                        <td>{{ run.master_workers }}</td>
+                        <td>{{ run.node1_workers }}</td>
+                        <td>{{ run.node2_workers }}</td>
+                        <td>{{ run.node_swap_gb }}</td>
+                        <td>{{ run.cpu_time }}</td>
+                        <td>{{ run.real_time }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
 {% endblock %}
